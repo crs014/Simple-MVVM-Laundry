@@ -1,0 +1,50 @@
+﻿<Window x:Class="Laundry.Main.Views.RatesView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Laundry.Main.Views"
+        mc:Ignorable="d"
+        Title="RatesView" Height="350" Width="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="TARIF" FontWeight="Bold" FontSize="35" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <TextBlock Text="Harga :" Margin="3,3,3,0" FontWeight="Bold" />
+            <TextBox Margin="3,0,3,0" Text="{Binding Price}" PreviewTextInput="NumberValidationTextBox"/>
+            <TextBlock Text="Unit :" Margin="3,3,3,0" FontWeight="Bold" />
+            <TextBox Margin="3,0,3,0" Text="{Binding Unit}"/>
+            <TextBlock Text="Jenis Pakaian:" Margin="3,3,3,0" FontWeight="Bold"/>
+            <ComboBox Margin="3,0,3,0" ItemsSource="{Binding ShirtCollection}" SelectedItem="{Binding Shirt}" DisplayMemberPath="Name"/>
+            <TextBlock Text="Jenis Layanan:" Margin="3,3,3,0" FontWeight="Bold" />
+            <ComboBox Margin="3,0,3,0" ItemsSource="{Binding ServiceCollection}" SelectedItem="{Binding Service}" DisplayMemberPath="Name"/>
+            <StackPanel Orientation="Horizontal" Margin="3,10,3,0" >
+                <Button Content="Confirm" Command="{Binding AddRates}" Width="60" Margin="0,0,5,0" />
+                <Button Content="Remove" Command="{Binding RemoveRates}" Width="60" Margin="0,0,5,0" />
+            </StackPanel>
+        </StackPanel>
+        <DataGrid Grid.Column="1" 
+                  Grid.Row="1" 
+                  ColumnWidth="*" 
+                  AutoGenerateColumns="False"  
+                  CanUserAddRows="False"
+                  CanUserResizeColumns="False" 
+                  SelectionMode="Single"
+                  SelectedItem="{Binding SelectedRates}"
+                  ItemsSource="{Binding Path=RatesCollection, Mode=TwoWay}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Jenis Pakaian" Binding="{Binding ShirtModel.Name}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Jenis Layanan" Binding="{Binding ServiceModel.Name}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Harga" Binding="{Binding Price}"/>
+                <DataGridTextColumn Header="Unit" Binding="{Binding Unit}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

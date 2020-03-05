@@ -1,0 +1,30 @@
+﻿<Window x:Class="Laundry.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:Laundry.Main.ViewModels"
+        WindowState="Maximized"
+        mc:Ignorable="d"
+        Title="Simple Laundry">
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Menu x:Name="menu">
+            <MenuItem Header="TRANSAKSI">
+                <MenuItem Header="TRANSAKSI MASUK" Command="{Binding CreateTransactionCommand}"/>
+                <MenuItem Header="HISTORY TRANSAKSI" Command="{Binding TransactionHistoryCommand}"/>
+            </MenuItem>
+            <MenuItem Header="JENIS LAUNDRY">
+                <MenuItem Header="JENIS LAYANAN" Command="{Binding ServiceCommand}"/>
+                <MenuItem Header="JENIS PAKAIAN" Command="{Binding ShirtCommand}"/>
+            </MenuItem>
+            <MenuItem Header="TARIF" Command="{Binding RatesCommand}"/>
+        </Menu>
+    </Grid>
+</Window>
