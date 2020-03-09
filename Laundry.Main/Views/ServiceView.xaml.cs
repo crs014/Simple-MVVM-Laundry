@@ -33,5 +33,10 @@ namespace Laundry.Main.Views
         {
             SystemCommands.CloseWindow(this);
         }
+
+        private void WindowMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }

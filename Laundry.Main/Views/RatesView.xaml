@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         WindowStyle="None"
-        Title="Tarif" Height="350" Width="600">
+        Title="Tarif" Height="350" Width="600"
+        MouseLeftButtonDown="WindowMouseLeftButtonDown">
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static SystemCommands.CloseWindowCommand}" CanExecute="CanExecute" Executed="ExecuteClose" />
     </Window.CommandBindings>

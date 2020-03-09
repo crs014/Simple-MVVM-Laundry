@@ -67,5 +67,10 @@ namespace Laundry.Main
                 RestoreButton.Visibility = Visibility.Collapsed;
             }
         }
+
+        private void WindowMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }

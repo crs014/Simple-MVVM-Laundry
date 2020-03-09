@@ -8,7 +8,8 @@
         mc:Ignorable="d"
         WindowStyle="None"
         Title="Simple Laundry"
-        SizeChanged="ChangeSize">
+        SizeChanged="ChangeSize"
+        MouseLeftButtonDown="WindowMouseLeftButtonDown">
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
