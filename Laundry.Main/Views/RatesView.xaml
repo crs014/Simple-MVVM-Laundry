@@ -5,18 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Laundry.Main.Views"
         mc:Ignorable="d"
-        Title="RatesView" Height="350" Width="600">
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Title="Tarif" Height="350" Width="600">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static SystemCommands.CloseWindowCommand}" CanExecute="CanExecute" Executed="ExecuteClose" />
+    </Window.CommandBindings>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="29"/>
             <RowDefinition Height="50"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label Style="{StaticResource LabelHeader}" Content="TARIF" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
-        <StackPanel Grid.Column="0" Grid.Row="1">
+        <Grid Background="{StaticResource MainSolidColor}" Grid.Row="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Name="titlebar" Margin="5,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" Grid.Column="0">
+                <Label Foreground="White" FontFamily="arial" Content="Tarif"></Label>
+            </StackPanel>
+            <StackPanel Margin="0" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Column="1" Height="29">
+                <Button Command="{x:Static SystemCommands.CloseWindowCommand}" Height="29" Width="29" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" WindowChrome.IsHitTestVisibleInChrome="True">
+                    <Image Margin="6" Source="{StaticResource CloseWindow}"></Image>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Label Style="{StaticResource LabelHeader}" Content="TARIF" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
+        <StackPanel Grid.Column="0" Grid.Row="2">
             <Label Content="Harga :"  Style="{StaticResource LabelInput}"/>
             <TextBox Margin="3,0,3,0" Text="{Binding Price}" PreviewTextInput="NumberValidationTextBox"/>
             <Label Content="Unit :" Style="{StaticResource LabelInput}"/>
@@ -31,7 +51,7 @@
             </StackPanel>
         </StackPanel>
         <DataGrid Grid.Column="1" 
-                  Grid.Row="1" 
+                  Grid.Row="2" 
                   ColumnWidth="*" 
                   AutoGenerateColumns="False"  
                   CanUserAddRows="False"

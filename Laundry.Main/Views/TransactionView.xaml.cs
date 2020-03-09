@@ -23,5 +23,15 @@ namespace Laundry.Main.Views
         {
             InitializeComponent();
         }
+
+        private void CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void ExecuteClose(object sender, ExecutedRoutedEventArgs e)
+        {
+            SystemCommands.CloseWindow(this);
+        }
     }
 }

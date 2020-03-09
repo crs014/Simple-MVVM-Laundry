@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Laundry.Main.Views"
         ResizeMode="NoResize"
+        WindowStyle="None"
         mc:Ignorable="d"
         Title="AddTransactionView" Height="600" Width="800">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static SystemCommands.CloseWindowCommand}" CanExecute="CanExecute" Executed="ExecuteClose" />
+    </Window.CommandBindings>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
@@ -14,12 +18,28 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="29"/>
             <RowDefinition Height="50"/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label Content="TRANSAKSI MASUK" Grid.ColumnSpan="2" HorizontalAlignment="Center" Style="{StaticResource LabelHeader}"/>
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="2">
+
+        <Grid Background="{StaticResource MainSolidColor}" Grid.Row="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Name="titlebar" Margin="5,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" Grid.Column="0">
+                <Label Foreground="White" FontFamily="arial" Content="Transaksi"></Label>
+            </StackPanel>
+            <StackPanel Margin="0" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Column="1" Height="29">
+                <Button Command="{x:Static SystemCommands.CloseWindowCommand}" Height="29" Width="29" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" WindowChrome.IsHitTestVisibleInChrome="True">
+                    <Image Margin="6" Source="{StaticResource CloseWindow}"></Image>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Label Content="TRANSAKSI MASUK" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Style="{StaticResource LabelHeader}"/>
+        <StackPanel Grid.Column="0" Grid.Row="2" Grid.RowSpan="2">
             <Label Content="Nama Pelanggan :" Style="{StaticResource LabelInput}"/>
             <TextBox Margin="3,0,3,0" Text="{Binding Transaction.Name}"/>
             <Label Content="Alamat :" Style="{StaticResource LabelInput}"/>
@@ -30,7 +50,7 @@
                 <Button Content="Confirm" Command="{Binding AddTransaction}" Width="60" Style="{StaticResource buttonFlat}"/>
             </StackPanel>
         </StackPanel>
-        <DataGrid Grid.Row="1" 
+        <DataGrid Grid.Row="2" 
                   Grid.Column="1" 
                   Margin="0,0,0,20"
                   ItemsSource="{Binding Path=Transaction.TransactionDetails, Mode=TwoWay}"
@@ -49,11 +69,11 @@
                 <DataGridTextColumn Header="Jumlah" Binding="{Binding Quantity}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <StackPanel Grid.Row="2" Grid.Column="0">
+        <StackPanel Grid.Row="3" Grid.Column="0">
             <Button Content="Add" Command="{Binding AddItemTransaction}" Width="60" Style="{StaticResource buttonFlat}" Margin="220,0,5,0" />
             <Button Content="Remove" Command="{Binding RemoveItemTransaction}" Width="60" Style="{StaticResource buttonFlat}" Margin="220,5,5,0" />
         </StackPanel>
-        <DataGrid Grid.Row="2" 
+        <DataGrid Grid.Row="3" 
                   Grid.Column="1"  
                   ColumnWidth="*" 
                   AutoGenerateColumns="False"  

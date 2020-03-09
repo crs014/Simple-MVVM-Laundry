@@ -56,7 +56,12 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Icons\CloseWindow.png" />
+    <Resource Include="Icons\MaximizeWindow.png" />
+    <Resource Include="Icons\RemoveTreeView.png" />
+    <Resource Include="Icons\RestoreDown.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Common\Background.jpg" />
   </ItemGroup>

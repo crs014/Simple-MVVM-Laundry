@@ -1,4 +1,4 @@
-﻿<Window x:Class="Laundry.MainWindow"
+﻿<Window x:Class="Laundry.Main.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,9 @@
         xmlns:viewModel="clr-namespace:Laundry.Main.ViewModels"
         WindowState="Maximized"
         mc:Ignorable="d"
-        Title="Simple Laundry">
+        WindowStyle="None"
+        Title="Simple Laundry"
+        SizeChanged="ChangeSize">
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
@@ -14,12 +16,42 @@
         <ImageBrush ImageSource="{StaticResource Background}">
         </ImageBrush>
     </Window.Background>
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static SystemCommands.CloseWindowCommand}" CanExecute="CanExecute" Executed="ExecuteClose" />
+        <CommandBinding Command="{x:Static SystemCommands.MaximizeWindowCommand}" CanExecute="CanExecute" Executed="ExecuteMaximize" />
+        <CommandBinding Command="{x:Static SystemCommands.MinimizeWindowCommand}" CanExecute="CanExecute" Executed="ExecuteMinimize" />
+        <CommandBinding Command="{x:Static SystemCommands.RestoreWindowCommand}" CanExecute="CanExecute" Executed="ExecuteRestoreWindow" />
+    </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="29"/>
             <RowDefinition Height="20"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Menu x:Name="menu">
+        <Grid Background="{StaticResource MainSolidColor}" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Name="titlebar" Margin="5,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" Grid.Column="0">
+                <Label Foreground="White" FontFamily="arial" Content="Simple Laundry"></Label>
+            </StackPanel>
+            <StackPanel Margin="0" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Column="1" Height="29">
+                <Button VerticalContentAlignment="Bottom" Command="{x:Static SystemCommands.MinimizeWindowCommand}" Height="29" Width="29" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" WindowChrome.IsHitTestVisibleInChrome="True">
+                    <Image Margin="6" Source="{StaticResource RemoveTreeView}"></Image>
+                </Button>
+                <Button Name="MaxButton" Margin="0" Command="{x:Static SystemCommands.MaximizeWindowCommand}" Visibility="Collapsed" Height="29" Width="29" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" WindowChrome.IsHitTestVisibleInChrome="True">
+                    <Image Margin="6" Source="{StaticResource MaximizeWindow}"></Image>
+                </Button>
+                <Button Name="RestoreButton" Command="{x:Static SystemCommands.RestoreWindowCommand}" Height="29" Width="29" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" WindowChrome.IsHitTestVisibleInChrome="True">
+                    <Image Margin="6" Source="{StaticResource RestoreDown}"></Image>
+                </Button>
+                <Button Command="{x:Static SystemCommands.CloseWindowCommand}" Height="29" Width="29" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" WindowChrome.IsHitTestVisibleInChrome="True">
+                    <Image Margin="6" Source="{StaticResource CloseWindow}"></Image>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Menu x:Name="menu" Grid.Row="1">
             <MenuItem Header="TRANSAKSI">
                 <MenuItem Header="TRANSAKSI MASUK" Command="{Binding CreateTransactionCommand}"/>
                 <MenuItem Header="HISTORY TRANSAKSI" Command="{Binding TransactionHistoryCommand}"/>

@@ -192,5 +192,9 @@
 
     <!---Start Bitmap Image Source-->
     <BitmapImage UriSource="/Laundry.Asset;component/Images/Common/Background.jpg" x:Key="Background"/>
+    <BitmapImage UriSource="/Laundry.Asset;component/Icons/CloseWindow.png" x:Key="CloseWindow"/>
+    <BitmapImage UriSource="/Laundry.Asset;component/Icons/MaximizeWindow.png" x:Key="MaximizeWindow"/>
+    <BitmapImage UriSource="/Laundry.Asset;component/Icons/RemoveTreeView.png" x:Key="RemoveTreeView"/>
+    <BitmapImage UriSource="/Laundry.Asset;component/Icons/RestoreDown.png" x:Key="RestoreDown"/>
     <!---End Bitmap Image Source-->
 </ResourceDictionary>

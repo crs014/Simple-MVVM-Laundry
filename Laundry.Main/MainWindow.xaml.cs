@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Laundry
+namespace Laundry.Main
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,6 +23,49 @@ namespace Laundry
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void ExecuteClose(object sender, ExecutedRoutedEventArgs e)
+        {
+            SystemCommands.CloseWindow(this);
+        }
+
+        private void ExecuteMaximize(object sender, ExecutedRoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Maximized;
+            MaxButton.Visibility = Visibility.Collapsed;
+            RestoreButton.Visibility = Visibility.Visible;
+        }
+
+        private void ExecuteMinimize(object sender, ExecutedRoutedEventArgs e)
+        {
+            SystemCommands.MinimizeWindow(this);
+        }
+
+        private void ExecuteRestoreWindow(object sender, ExecutedRoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Normal;
+            MaxButton.Visibility = Visibility.Visible;
+            RestoreButton.Visibility = Visibility.Collapsed;
+        }
+
+        private void ChangeSize(object sender, SizeChangedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                MaxButton.Visibility = Visibility.Collapsed;
+                RestoreButton.Visibility = Visibility.Visible;
+            }
+            else if (this.WindowState == WindowState.Normal)
+            {
+                MaxButton.Visibility = Visibility.Visible;
+                RestoreButton.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }
