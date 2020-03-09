@@ -182,7 +182,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Laundry.Main_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -215,6 +214,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Laundry.Asset\Laundry.Asset.csproj">
+      <Project>{c8160b4a-7e7d-4a14-b34e-7e08e1306a47}</Project>
+      <Name>Laundry.Asset</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Laundry.Entity\Laundry.Entity.csproj">
       <Project>{371F5162-070D-4895-B618-725F046CDDDE}</Project>
       <Name>Laundry.Entity</Name>

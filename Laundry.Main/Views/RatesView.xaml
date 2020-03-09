@@ -15,19 +15,19 @@
             <RowDefinition Height="50"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Text="TARIF" FontWeight="Bold" FontSize="35" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
+        <Label Style="{StaticResource LabelHeader}" Content="TARIF" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
         <StackPanel Grid.Column="0" Grid.Row="1">
-            <TextBlock Text="Harga :" Margin="3,3,3,0" FontWeight="Bold" />
+            <Label Content="Harga :"  Style="{StaticResource LabelInput}"/>
             <TextBox Margin="3,0,3,0" Text="{Binding Price}" PreviewTextInput="NumberValidationTextBox"/>
-            <TextBlock Text="Unit :" Margin="3,3,3,0" FontWeight="Bold" />
+            <Label Content="Unit :" Style="{StaticResource LabelInput}"/>
             <TextBox Margin="3,0,3,0" Text="{Binding Unit}"/>
-            <TextBlock Text="Jenis Pakaian:" Margin="3,3,3,0" FontWeight="Bold"/>
+            <Label Content="Jenis Pakaian:" Style="{StaticResource LabelInput}"/>
             <ComboBox Margin="3,0,3,0" ItemsSource="{Binding ShirtCollection}" SelectedItem="{Binding Shirt}" DisplayMemberPath="Name"/>
-            <TextBlock Text="Jenis Layanan:" Margin="3,3,3,0" FontWeight="Bold" />
+            <Label Content="Jenis Layanan:" Style="{StaticResource LabelInput}"/>
             <ComboBox Margin="3,0,3,0" ItemsSource="{Binding ServiceCollection}" SelectedItem="{Binding Service}" DisplayMemberPath="Name"/>
             <StackPanel Orientation="Horizontal" Margin="3,10,3,0" >
-                <Button Content="Confirm" Command="{Binding AddRates}" Width="60" Margin="0,0,5,0" />
-                <Button Content="Remove" Command="{Binding RemoveRates}" Width="60" Margin="0,0,5,0" />
+                <Button Style="{StaticResource buttonFlat}" Content="Confirm" Command="{Binding AddRates}" Width="60"/>
+                <Button Style="{StaticResource buttonFlat}" Content="Remove" Command="{Binding RemoveRates}" Width="60"/>
             </StackPanel>
         </StackPanel>
         <DataGrid Grid.Column="1" 
@@ -38,7 +38,8 @@
                   CanUserResizeColumns="False" 
                   SelectionMode="Single"
                   SelectedItem="{Binding SelectedRates}"
-                  ItemsSource="{Binding Path=RatesCollection, Mode=TwoWay}">
+                  ItemsSource="{Binding Path=RatesCollection, Mode=TwoWay}"
+                  Style="{StaticResource DataGridStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Jenis Pakaian" Binding="{Binding ShirtModel.Name}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Jenis Layanan" Binding="{Binding ServiceModel.Name}" IsReadOnly="True"/>

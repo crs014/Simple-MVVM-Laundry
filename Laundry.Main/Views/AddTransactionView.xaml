@@ -18,16 +18,16 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Text="TRANSAKSI MASUK" FontWeight="Bold" FontSize="35" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
+        <Label Content="TRANSAKSI MASUK" Grid.ColumnSpan="2" HorizontalAlignment="Center" Style="{StaticResource LabelHeader}"/>
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="2">
-            <TextBlock Text="Nama Pelanggan :" Margin="3,3,3,0" FontWeight="Bold" />
+            <Label Content="Nama Pelanggan :" Style="{StaticResource LabelInput}"/>
             <TextBox Margin="3,0,3,0" Text="{Binding Transaction.Name}"/>
-            <TextBlock Text="Alamat :" Margin="3,3,3,0" FontWeight="Bold" />
+            <Label Content="Alamat :" Style="{StaticResource LabelInput}"/>
             <TextBox Margin="3,0,3,0" Text="{Binding Transaction.Address}"/>
-            <TextBlock Text="Nomor Telp:" Margin="3,3,3,0" FontWeight="Bold" />
+            <Label Content="Nomor Telp:" Style="{StaticResource LabelInput}"/>
             <TextBox Margin="3,0,3,0" Text="{Binding Transaction.Phone}"/>
             <StackPanel Orientation="Horizontal" Margin="3,10,3,0" >
-                <Button Content="Confirm" Command="{Binding AddTransaction}" Width="60" Margin="0,0,5,0" />
+                <Button Content="Confirm" Command="{Binding AddTransaction}" Width="60" Style="{StaticResource buttonFlat}"/>
             </StackPanel>
         </StackPanel>
         <DataGrid Grid.Row="1" 
@@ -39,7 +39,8 @@
                   AutoGenerateColumns="False"  
                   CanUserAddRows="False"
                   CanUserResizeColumns="False" 
-                  SelectionMode="Single">
+                  SelectionMode="Single"
+                  Style="{StaticResource DataGridStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Jenis Pakaian" Binding="{Binding RatesModel.ShirtModel.Name}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Jenis Layanan" Binding="{Binding RatesModel.ServiceModel.Name}" IsReadOnly="True"/>
@@ -49,8 +50,8 @@
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="2" Grid.Column="0">
-            <Button Content="Add" Command="{Binding AddItemTransaction}" Width="60" Margin="220,0,5,0" />
-            <Button Content="Remove" Command="{Binding RemoveItemTransaction}" Width="60" Margin="220,5,5,0" />
+            <Button Content="Add" Command="{Binding AddItemTransaction}" Width="60" Style="{StaticResource buttonFlat}" Margin="220,0,5,0" />
+            <Button Content="Remove" Command="{Binding RemoveItemTransaction}" Width="60" Style="{StaticResource buttonFlat}" Margin="220,5,5,0" />
         </StackPanel>
         <DataGrid Grid.Row="2" 
                   Grid.Column="1"  
@@ -60,7 +61,8 @@
                   CanUserResizeColumns="False" 
                   SelectionMode="Single"
                   SelectedItem="{Binding Rates}"
-                  ItemsSource="{Binding Path=RatesCollection, Mode=TwoWay}">
+                  ItemsSource="{Binding Path=RatesCollection, Mode=TwoWay}"
+                  Style="{StaticResource DataGridStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Jenis Pakaian" Binding="{Binding ShirtModel.Name}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Jenis Layanan" Binding="{Binding ServiceModel.Name}" IsReadOnly="True"/>

@@ -16,13 +16,13 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Jenis Pakaian" FontWeight="Bold" FontSize="35" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
+        <Label Style="{StaticResource LabelHeader}" Content="Jenis Pakaian" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
         <StackPanel Grid.Column="0" Grid.Row="1">
-            <TextBlock Text="Nama Pakaian :" Margin="3,3,3,0" FontWeight="Bold" />
+            <Label Style="{StaticResource LabelInput}" Content="Nama Pakaian :"/>
             <TextBox Margin="3,0,3,0" Text="{Binding Name}"/>
             <StackPanel Orientation="Horizontal" Margin="3,10,3,0" >
-                <Button Content="Confirm" Command="{Binding AddShirt}" Width="60" Margin="0,0,5,0" />
-                <Button Content="Remove" Command="{Binding RemoveShirt}" Width="60" Margin="0,0,5,0" />
+                <Button Style="{StaticResource buttonFlat}" Content="Confirm" Command="{Binding AddShirt}" Width="60"/>
+                <Button Style="{StaticResource buttonFlat}" Content="Remove" Command="{Binding RemoveShirt}" Width="60"/>
             </StackPanel>
         </StackPanel>
         <DataGrid Grid.Column="1" 
@@ -34,7 +34,8 @@
                   SelectionMode="Single"
                   SelectedItem="{Binding SelectedShirt}"
                   ItemsSource="{Binding Path=ShirtCollection, Mode=TwoWay}"
-                  SelectedIndex="{Binding Path=SelectedShirtIndex}">
+                  SelectedIndex="{Binding Path=SelectedShirtIndex}"
+                  Style="{StaticResource DataGridStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Nama" Binding="{Binding Name, Mode=TwoWay}"/>

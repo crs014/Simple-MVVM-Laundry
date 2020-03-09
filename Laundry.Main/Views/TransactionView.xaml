@@ -14,9 +14,9 @@
             <RowDefinition Height="30"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Text="HISTORY TRANSAKSI" FontWeight="Bold" FontSize="35" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
+        <Label Style="{StaticResource LabelHeader}" Content="HISTORY TRANSAKSI" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
         <StackPanel Grid.Row="1"  Orientation="Horizontal">
-            <Button Content="Delete" Margin="5,0,0,10" Width="100" Command="{Binding RemoveTransaction}"/>
+            <Button Style="{StaticResource buttonFlat}" Content="Delete" Margin="5,0,0,10" Width="100" Command="{Binding RemoveTransaction}"/>
         </StackPanel>
         
         <DataGrid Grid.Row="2"
@@ -26,7 +26,8 @@
                   CanUserResizeColumns="False" 
                   SelectionMode="Single"
                   ItemsSource="{Binding Path=TransactionCollection, Mode=TwoWay}"
-                  SelectedItem="{Binding Transaction}">
+                  SelectedItem="{Binding Transaction}"
+                  Style="{StaticResource DataGridStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" IsReadOnly="True" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Nama" IsReadOnly="True" Binding="{Binding Name}"/>
@@ -46,7 +47,8 @@
                   AutoGenerateColumns="False"  
                   CanUserAddRows="False"
                   CanUserResizeColumns="False" 
-                  SelectionMode="Single">
+                  SelectionMode="Single"
+                  Style="{StaticResource DataGridStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Jenis Pakaian" Binding="{Binding RatesModel.ShirtModel.Name}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Jenis Layanan" Binding="{Binding RatesModel.ServiceModel.Name}" IsReadOnly="True"/>
